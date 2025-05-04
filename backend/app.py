@@ -11,8 +11,10 @@ model = tf.keras.models.load_model('model/chat_chien_model.h5')
 
 app = Flask(__name__)
 CORS(app, resources={
-    r"/*": {"origins": ["http://localhost:3000", "http://127.0.0.1:3000"]}
+    r"/*": {"origins": ["https://catordog1.netlify.app"]}
 })
+
+
 @app.route('/predict', methods=['POST'])
 def predict():
     file = request.files['image']
