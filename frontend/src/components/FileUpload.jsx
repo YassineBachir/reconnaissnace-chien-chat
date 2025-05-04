@@ -5,6 +5,7 @@ const FileUpload = () => {
   const [file, setFile] = useState(null);
   const [result, setResult] = useState(null);
   const [isDragging, setIsDragging] = useState(false);
+  const API_URL = "https:/reconnaissnace-chien-chat.onrender.com/predict"; // à adapter selon Render
 
   const handleDragEnter = (e) => {
     e.preventDefault();
@@ -32,7 +33,7 @@ const FileUpload = () => {
     formData.append('image', file);
 
     try {
-      const response = await axios.post('http://localhost:5000/predict', formData);
+      const response = await axios.post(API_URL, formData);
       setResult(response.data);
     } catch (error) {
       console.error('Erreur:', error);
