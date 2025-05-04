@@ -5,6 +5,8 @@ import numpy as np
 from PIL import Image
 import io
 from config import Config
+import os
+
 
 # charger le modèle (place-le sous backend/model/)
 model = tf.keras.models.load_model('model/chat_chien_model.h5')
