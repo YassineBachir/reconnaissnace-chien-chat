@@ -10,9 +10,17 @@ from config import Config
 model = tf.keras.models.load_model('model/chat_chien_model.h5')
 
 app = Flask(__name__)
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
+
+allowed_origins = os.environ.get('ALLOWED_ORIGINS', '').split(',')
 CORS(app, resources={
-    r"/*": {"origins": ["https://catordog1.netlify.app"]}
+    r"/predict": {
+        "origins": allowed_origins,
+        "methods": ["POST", "OPTIONS"],
+        "allow_headers": ["Content-Type"]
+    }
 })
+
 
 
 @app.route('/predict', methods=['POST'])

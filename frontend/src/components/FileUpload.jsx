@@ -5,8 +5,7 @@ const FileUpload = () => {
   const [file, setFile] = useState(null);
   const [result, setResult] = useState(null);
   const [isDragging, setIsDragging] = useState(false);
-  const API_URL = "https://reconnaissnace-chien-chat.onrender.com/predict";
-
+  const API_URL = process.env.REACT_APP_API_URL + "/predict";
 
   const handleDragEnter = (e) => {
     e.preventDefault();
